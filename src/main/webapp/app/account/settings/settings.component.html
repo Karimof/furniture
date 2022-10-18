@@ -1,0 +1,166 @@
+<div>
+  <div class="d-flex justify-content-center">
+    <div class="col-md-8">
+      <h2 jhiTranslate="settings.title" [translateValues]="{ username: settingsForm.value.login }" *ngIf="settingsForm.value.login">
+        [<strong>{{ settingsForm.value.login }}</strong
+        >] sozlamalari
+      </h2>
+
+      <div class="alert alert-success" *ngIf="success" jhiTranslate="settings.messages.success">
+        <strong>Sozlamalar saqlandi!</strong>
+      </div>
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <form name="form" role="form" (ngSubmit)="save()" [formGroup]="settingsForm" *ngIf="settingsForm.value.login" novalidate>
+        <div class="mb-3">
+          <label class="form-label" for="firstName" jhiTranslate="settings.form.firstname">Ism</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            placeholder="{{ 'settings.form.firstname.placeholder' | translate }}"
+            formControlName="firstName"
+            data-cy="firstname"
+          />
+
+          <div
+            *ngIf="
+              settingsForm.get('firstName')!.invalid && (settingsForm.get('firstName')!.dirty || settingsForm.get('firstName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.required"
+              jhiTranslate="settings.messages.validate.firstname.required"
+            >
+              Ism kiriting.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.minlength"
+              jhiTranslate="settings.messages.validate.firstname.minlength"
+            >
+              Ism uzunligi kamida 1 harf bo'lsin
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.maxlength"
+              jhiTranslate="settings.messages.validate.firstname.maxlength"
+            >
+              Ism uzunligi ko'pida 50 harf bo'lsin
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="lastName" jhiTranslate="settings.form.lastname">Familiya</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="{{ 'settings.form.lastname.placeholder' | translate }}"
+            formControlName="lastName"
+            data-cy="lastname"
+          />
+
+          <div
+            *ngIf="settingsForm.get('lastName')!.invalid && (settingsForm.get('lastName')!.dirty || settingsForm.get('lastName')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.required"
+              jhiTranslate="settings.messages.validate.lastname.required"
+            >
+              Familiya kiriting.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.minlength"
+              jhiTranslate="settings.messages.validate.lastname.minlength"
+            >
+              Familiya uzunligi kamida 1 harf bo'lsin
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.maxlength"
+              jhiTranslate="settings.messages.validate.lastname.maxlength"
+            >
+              Familiya uzunligi ko'pida 50 harf bo'lsin
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="email" jhiTranslate="global.form.email.label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="{{ 'global.form.email.placeholder' | translate }}"
+            formControlName="email"
+            data-cy="email"
+          />
+
+          <div *ngIf="settingsForm.get('email')!.invalid && (settingsForm.get('email')!.dirty || settingsForm.get('email')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.required"
+              jhiTranslate="global.messages.validate.email.required"
+            >
+              Email kiritilishi zarur.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.email"
+              jhiTranslate="global.messages.validate.email.invalid"
+            >
+              Iltimos, to`g`ri Email kiriting.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.minlength"
+              jhiTranslate="global.messages.validate.email.minlength"
+            >
+              Email uzunligi kamida 5 harfdan iborat bo`lsin
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.maxlength"
+              jhiTranslate="global.messages.validate.email.maxlength"
+            >
+              Email 50 harfdan uzun bo`lmasin
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3" *ngIf="languages && languages.length > 0">
+          <label for="langKey" jhiTranslate="settings.form.language">Til</label>
+          <select class="form-control" id="langKey" name="langKey" formControlName="langKey" data-cy="langKey">
+            <option *ngFor="let language of languages" [value]="language">{{ language | findLanguageFromKey }}</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="settingsForm.invalid"
+          class="btn btn-primary"
+          jhiTranslate="settings.form.button"
+          data-cy="submit"
+        >
+          Saqlash
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

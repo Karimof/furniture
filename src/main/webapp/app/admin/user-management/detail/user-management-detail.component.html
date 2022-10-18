@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="user">
+      <h2>
+        <span jhiTranslate="userManagement.detail.title">Foydalanuvchi</span> [<strong>{{ user.login }}</strong
+        >]
+      </h2>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="userManagement.login">Login</span></dt>
+        <dd>
+          <span>{{ user.login }}</span>
+          <span *ngIf="user.activated" class="badge bg-success" jhiTranslate="userManagement.activated">Faol</span>
+          <span *ngIf="!user.activated" class="badge bg-danger" jhiTranslate="userManagement.deactivated">Faol emas</span>
+        </dd>
+
+        <dt><span jhiTranslate="userManagement.firstName">Ismi</span></dt>
+        <dd>{{ user.firstName }}</dd>
+
+        <dt><span jhiTranslate="userManagement.lastName">Familiyasi</span></dt>
+        <dd>{{ user.lastName }}</dd>
+
+        <dt><span jhiTranslate="userManagement.email">Email</span></dt>
+        <dd>{{ user.email }}</dd>
+
+        <dt><span jhiTranslate="userManagement.langKey">Tili</span></dt>
+        <dd>{{ user.langKey }}</dd>
+
+        <dt><span jhiTranslate="userManagement.createdBy">Qo'shgan</span></dt>
+        <dd>{{ user.createdBy }}</dd>
+
+        <dt><span jhiTranslate="userManagement.createdDate">Qo'shilgan vaqti</span></dt>
+        <dd>{{ user.createdDate | date: 'dd/MM/yy HH:mm' }}</dd>
+
+        <dt><span jhiTranslate="userManagement.lastModifiedBy">O'zgartirgan</span></dt>
+        <dd>{{ user.lastModifiedBy }}</dd>
+
+        <dt><span jhiTranslate="userManagement.lastModifiedDate">O'zgartirilgan sanasi</span></dt>
+        <dd>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</dd>
+
+        <dt><span jhiTranslate="userManagement.profiles">Profili</span></dt>
+        <dd>
+          <ul class="list-unstyled">
+            <li *ngFor="let authority of user.authorities">
+              <span class="badge bg-info">{{ authority }}</span>
+            </li>
+          </ul>
+        </dd>
+      </dl>
+
+      <button type="submit" routerLink="../../" class="btn btn-info">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Orqaga</span>
+      </button>
+    </div>
+  </div>
+</div>
