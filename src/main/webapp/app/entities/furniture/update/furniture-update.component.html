@@ -1,0 +1,109 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-furniture-heading" data-cy="FurnitureCreateUpdateHeading" jhiTranslate="furnitureApp.furniture.home.createOrEditLabel">
+        Furnitureni tahrirlash
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furnitureApp.furniture.photo" for="field_photo">Photo</label>
+          <input type="text" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+          <div *ngIf="editForm.get('photo')!.invalid && (editForm.get('photo')!.dirty || editForm.get('photo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('photo')?.errors?.required" jhiTranslate="entity.validation.required">
+              To`ldirish zarur
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furnitureApp.furniture.image" for="field_image">Image</label>
+          <input type="text" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+          <div *ngIf="editForm.get('image')!.invalid && (editForm.get('image')!.dirty || editForm.get('image')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('image')?.errors?.required" jhiTranslate="entity.validation.required">
+              To`ldirish zarur
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furnitureApp.furniture.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              To`ldirish zarur
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('name')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 64 }"
+            >
+              Ko`pi bilan 64ta bo`lsin.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furnitureApp.furniture.installation" for="field_installation">Installation</label>
+          <select class="form-control" name="installation" formControlName="installation" id="field_installation" data-cy="installation">
+            <option [ngValue]="null">{{ 'furnitureApp.Installation.null' | translate }}</option>
+            <option *ngFor="let installation of installationValues" [value]="installation">
+              {{ 'furnitureApp.Installation.' + installation | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="editForm.get('installation')!.invalid && (editForm.get('installation')!.dirty || editForm.get('installation')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('installation')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              To`ldirish zarur
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furnitureApp.furniture.type" for="field_type">Type</label>
+          <select class="form-control" id="field_type" data-cy="type" name="type" formControlName="type" [compareWith]="compareTypes">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="typesOption" *ngFor="let typesOption of typesSharedCollection">{{ typesOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furnitureApp.furniture.brand" for="field_brand">Brand</label>
+          <select class="form-control" id="field_brand" data-cy="brand" name="brand" formControlName="brand" [compareWith]="compareBrand">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="brandOption" *ngFor="let brandOption of brandsSharedCollection">{{ brandOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Bekor</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Saqla</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

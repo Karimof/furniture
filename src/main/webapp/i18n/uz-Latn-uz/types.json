@@ -1,0 +1,24 @@
+{
+  "furnitureApp": {
+    "types": {
+      "home": {
+        "title": "Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Types qo`shish",
+        "createOrEditLabel": "Typesni tahrirlash",
+        "notFound": "No Types found"
+      },
+      "created": "Types {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Types saqlandi",
+      "deleted": "{{ param }}- Types o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Typesni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Types"
+      },
+      "id": "ID",
+      "name": "Name"
+    }
+  }
+}

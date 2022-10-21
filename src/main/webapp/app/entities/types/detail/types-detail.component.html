@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="types">
+      <h2 data-cy="typesDetailsHeading"><span jhiTranslate="furnitureApp.types.detail.title">Types</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ types.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="furnitureApp.types.name">Name</span></dt>
+        <dd>
+          <span>{{ types.name }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Orqaga</span>
+      </button>
+
+      <button type="button" [routerLink]="['/types', types.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">O`zgartir</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="furniture">
+      <h2 data-cy="furnitureDetailsHeading"><span jhiTranslate="furnitureApp.furniture.detail.title">Furniture</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ furniture.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="furnitureApp.furniture.photo">Photo</span></dt>
+        <dd>
+          <span>{{ furniture.photo }}</span>
+        </dd>
+        <dt><span jhiTranslate="furnitureApp.furniture.image">Image</span></dt>
+        <dd>
+          <span>{{ furniture.image }}</span>
+        </dd>
+        <dt><span jhiTranslate="furnitureApp.furniture.name">Name</span></dt>
+        <dd>
+          <span>{{ furniture.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="furnitureApp.furniture.installation">Installation</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'furnitureApp.Installation.' + furniture.installation }}">{{ furniture.installation }}</span>
+        </dd>
+        <dt><span jhiTranslate="furnitureApp.furniture.type">Type</span></dt>
+        <dd>
+          <div *ngIf="furniture.type">
+            <a [routerLink]="['/types', furniture.type.id, 'view']">{{ furniture.type.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="furnitureApp.furniture.brand">Brand</span></dt>
+        <dd>
+          <div *ngIf="furniture.brand">
+            <a [routerLink]="['/brand', furniture.brand.id, 'view']">{{ furniture.brand.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Orqaga</span>
+      </button>
+
+      <button type="button" [routerLink]="['/furniture', furniture.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">O`zgartir</span>
+      </button>
+    </div>
+  </div>
+</div>
