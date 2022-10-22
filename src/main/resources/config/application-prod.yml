@@ -34,8 +34,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/furniture
-    username: postgres
-    password: 123
+    username: furniture
+    password:
     hikari:
       poolName: Hikari
       auto-commit: false
