@@ -48,9 +48,6 @@ public class CacheConfiguration {
             createCache(cm, uz.apex.furniture.domain.User.class.getName());
             createCache(cm, uz.apex.furniture.domain.Authority.class.getName());
             createCache(cm, uz.apex.furniture.domain.User.class.getName() + ".authorities");
-            createCache(cm, uz.apex.furniture.domain.Furniture.class.getName());
-            createCache(cm, uz.apex.furniture.domain.Types.class.getName());
-            createCache(cm, uz.apex.furniture.domain.Brand.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
