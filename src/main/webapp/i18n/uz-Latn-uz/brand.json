@@ -1,0 +1,25 @@
+{
+  "furnitureApp": {
+    "brand": {
+      "home": {
+        "title": "Brands",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Brand qo`shish",
+        "createOrEditLabel": "Brandni tahrirlash",
+        "notFound": "No Brands found"
+      },
+      "created": "Brand {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Brand saqlandi",
+      "deleted": "{{ param }}- Brand o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Brandni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Brand"
+      },
+      "id": "ID",
+      "name": "Name",
+      "type": "Type"
+    }
+  }
+}

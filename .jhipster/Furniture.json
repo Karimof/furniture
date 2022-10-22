@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20221022090645",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "furniture",
+  "fields": [
+    {
+      "fieldName": "photo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "installation",
+      "fieldType": "Installation",
+      "fieldValues": "VERTICAL,HORIZONTAL"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Furniture",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "brand",
+      "relationshipName": "brand",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceClass"
+}

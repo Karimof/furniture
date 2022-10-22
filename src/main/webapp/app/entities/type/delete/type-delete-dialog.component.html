@@ -1,0 +1,24 @@
+<form *ngIf="type" name="deleteForm" (ngSubmit)="confirmDelete(type.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="typeDeleteDialogHeading" jhiTranslate="entity.delete.title">O`chirish amalini tasdiqlang</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <p id="jhi-delete-type-heading" jhiTranslate="furnitureApp.type.delete.question" [translateValues]="{ id: type.id }">
+      {{ type.id }}- Typeni o`chirmoqchimisiz?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Bekor</span>
+    </button>
+
+    <button id="jhi-confirm-delete-type" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">O`chir</span>
+    </button>
+  </div>
+</form>

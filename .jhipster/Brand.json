@@ -1,0 +1,27 @@
+{
+  "applications": "*",
+  "changelogDate": "20221022090647",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "brand",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Brand",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "type",
+      "relationshipName": "type",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,31 @@
+
+entity Furniture {
+	photo String,
+    image String,
+    name String,
+    installation Installation
+}
+
+entity Type {
+  name String
+}
+
+entity Brand{
+	name String
+}
+
+relationship ManyToOne {
+	Brand{type required} to Type,
+    Furniture{brand required} to Brand
+}
+
+enum Installation{
+	VERTICAL,
+    HORIZONTAL
+}
+
+dto * with mapstruct
+
+service * with serviceClass
+
+paginate * with pagination
